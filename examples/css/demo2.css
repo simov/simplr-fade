@@ -1,0 +1,59 @@
+* { margin: 0; padding: 0; outline:0; }
+
+body { font-size: 12px; line-height: 16px; font-family: Arial, Helvetica, Sans-Serif; color: #000; background: #fff; }
+
+a { color: #0252aa; text-decoration: none; cursor:pointer; }
+a:hover { background: #dcdcdc; text-decoration: none; }
+
+.shell { width: 500px; background: #fff; position: relative; z-index: 10; border-radius: 10px; box-shadow: 0px 0px 5px #000; padding: 20px; margin: 50px auto 0; }
+
+/*these properties must be set at minimum*/
+#fader1 { position: relative; }
+#fader1 .item { position: absolute; }
+#fader2 { position: relative; }
+#fader2 .item { position: absolute; }
+
+/*demo1*/
+#fader1 { width: 500px; height: 313px; position: relative; z-index: 2; box-shadow: 0px 0px 5px #cacaca; margin: 0 0 20px 0; }
+#fader1 .item { width: 500px; height: 313px; }
+#fader1 .item p { background: url(../images/pixel.png) repeat 0 0; color: #fff; text-align: center; position: absolute; z-index: 10; border-radius: 15px; padding: 15px; }
+#fader1 .item img { width: 100%; height: 100%; position: absolute; top:0; left:0; z-index: 1; }
+
+#fader1 .item .p1 { top:83px; right:166px; }
+#fader1 .item .p2 { top:130px; right:107px; }
+#fader1 .item .p3 { top:57px; right:84px; }
+#fader1 .item .p4 { bottom:120px; left:86px; }
+
+/*demo2*/
+#fader2 { width: 500px; height: 313px; position: relative; z-index: 1; overflow: hidden; box-shadow: 0px 0px 5px #cacaca; }
+#fader2 .item { width: 500px; height: 313px; }
+#fader2 .item p { background: url(../images/pixel.png) repeat 0 0; color: #fff; text-align: center; position: absolute; z-index: 10; border-radius: 15px; padding: 15px; }
+#fader2 .item img { position: absolute; top:0; left:0; z-index: 1; }
+
+#fader2 .item .p1 { top: 80px; right: 153px; }
+#fader2 .item .p2 { bottom: 188px; right: 356px; }
+#fader2 .item .p3 { bottom: 158px; left: 228px; }
+#fader2 .item .p4 { bottom: 20px; right: 20px; }
+
+
+/*fader controls*/
+.controls { text-align: center; position: relative; z-index: 100; cursor: default; }
+.controls li { display: inline; }
+.controls a { display: inline-block; text-align: center; background: #fff; border-radius: 10px; box-shadow: 0px 0px 5px #cacaca; padding: 4px 8px; }
+.controls a:hover { background: #dcdcdc; text-decoration: none; }
+.controls .stop {  }
+.controls .prev {  }
+.controls .next {  }
+.controls .start { font-weight: bold; }
+.controls .nav { display: inline; }
+.controls .nav a.active { background: #cecece; font-weight: bold; }
+
+#controls1 { position: absolute; top: 300px; left: 157px; z-index: 10; }
+#controls2 { position: absolute; bottom: 30px; left: 157px; z-index: 10; }
+
+
+.body { width: 100%; height: 100%; position: fixed; top:0; left:0; }
+.body-1 { background: url(../images/group2-1.jpg) repeat 0 0; }
+.body-2 { background: url(../images/group2-2.jpg) repeat 0 0; }
+.body-3 { background: url(../images/group2-3.jpg) repeat 0 0; }
+.body-4 { background: url(../images/group2-4.jpg) repeat 0 0; }

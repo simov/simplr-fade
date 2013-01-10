@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>simplr.fade</title>
+    <link href="css/demo1.css" rel="stylesheet" type="text/css" media="all" />
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script src="../lib/jquery.simplr.fade.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/demo1.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="shell">
+
+    <div class="fader">
+        <div class="item">
+            <p class="p1">this</p>
+            <img src="images/group1-1.jpg" alt="" />
+        </div>
+        <div class="item">
+            <p class="p2">is</p>
+            <img src="images/group1-2.jpg" alt="" />
+        </div>
+        <div class="item">
+            <p class="p3">some</p>
+            <img src="images/group1-3.jpg" alt="" />
+        </div>
+        <div class="item">
+            <p class="p4">HTML</p>
+            <img src="images/group1-4.jpg" alt="" />
+        </div>
+    </div>
+    
+    <ul class="controls">
+        <li><a href="#" class="prev">prev</a></li>
+        <li>
+            <ul class="nav">
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+            </ul>
+        </li>
+        <li><a href="#" class="next">next</a></li>
+        <li><a href="#" class="stop">stop</a></li>
+    </ul>
+
+    <form id="controls">
+        <fieldset>
+            <label>Easing</label>
+            <select class="easing">
+                <option>swing</option>
+                <option>linear</option>
+                <option>Quad</option>
+                <option>Cubic</option>
+                <option>Quart</option>
+                <option>Quint</option>
+                <option>Sine</option>
+                <option>Expo</option>
+                <option>Circ</option>
+                <option>Elastic</option>
+                <option>Back</option>
+                <option>Bounce</option>
+            </select>
+            <select class="easing-sub">
+                <option>easeIn</option>
+                <option>easeOut</option>
+                <option>easeInOut</option>
+            </select>
+            <label>Speed</label>
+            <select class="speed">
+                <option>200</option>
+                <option>400</option>
+                <option>800</option>
+                <option>1000</option>
+                <option>1200</option>
+            </select>
+            <label>Duration</label>
+            <select class="duration">
+                <option>1000</option>
+                <option>2000</option>
+                <option>3000</option>
+                <option>4000</option>
+                <option>5000</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label><input type="radio" name="radio" /> Fade (Default)</label>
+            <label><input type="radio" name="radio" /> Effect <span>(jQueryUI)</span></label>
+            <select class="effect">
+                <option>Puff</option>
+                <option>Blind</option>
+                <option>Clip</option>
+                <option>Drop</option>
+                <option>Explode</option>
+                <option>Fade</option>
+                <option>Fold</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label><input type="radio" name="radio" /> Animate</label>
+            <select class="animate">
+                <option>Predefined animation 1</option>
+                <option>Predefined animation 2</option>
+                <option>Predefined animation 3</option>
+                <option>Predefined animation 4</option>
+                <option>Predefined animation 5</option>
+                <option>Predefined animation 6</option>
+                <option>Predefined animation 7</option>
+                <option>Predefined animation 8</option>
+            </select>
+            <div class="custom">
+                <textarea rows="8" cols="1"></textarea>
+                <p>Invalid JSON!</p>
+                <label class="style-overflow"><input type="checkbox" /> fader overflow hidden</label>
+                <label class="style-images"><input type="checkbox" /> image width&amp;height 100%</label>
+                <button type="button" class="create">change</button>
+            </div>
+        </fieldset>
+    </form>
+    
+    <h2>API</h2>
+    <table id="api" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <th>Name</th>
+            <th class="value">Default</th>
+            <th>Description</th>
+        </tr>
+        <tr class="sub-title">
+            <td colspan="3">Property</td>
+        </tr>
+        <tr>
+            <td class="name">speed</td>
+            <td class="value">400</td>
+            <td class="descr">Speed of the animation.</td>
+        </tr>
+        <tr>
+            <td class="name">duration</td>
+            <td class="value">5000</td>
+            <td class="descr">Time between steps.</td>
+        </tr>
+        <tr>
+            <td class="name">auto</td>
+            <td class="value">true</td>
+            <td class="descr">Enable automatic transition.</td>
+        </tr>
+        <tr>
+            <td class="name">animate</td>
+            <td class="value string-value">fadeOut</td>
+            <td class="descr">Pass an object of css properties to be animated for the transition. <em>(default jquery animate())</em></td>
+        </tr>
+        <tr>
+            <td class="name">easing</td>
+            <td class="value string-value">swing</td>
+            <td class="descr">Specify easing for the transition. <strong>Requires</strong> <em>jquery.easing</em> plugin.</td>
+        </tr>
+        <tr>
+            <td class="name">effect</td>
+            <td class="value">null</td>
+            <td class="descr">Possible values: <em>blind</em>, <em>clip</em>, <em>drop</em>, <em>explode</em>, <em>fade</em>, <em>fold</em>, <em>puff</em>. <strong>Requires</strong> <em>jquery.ui.effects</em> plugin.</td>
+        </tr>
+        <tr class="sub-title sub-title-inner">
+            <td colspan="3">Event</td>
+        </tr>
+        <tr>
+            <td class="name">onFade(index)</td>
+            <td class="value">&nbsp;</td>
+            <td class="descr">Occurs just before the animation starts. Gives you the index of currently animated item. <em>(index is zero based)</em></td>
+        </tr>
+        <tr>
+            <td class="name">onAfterFade(index)</td>
+            <td class="value">&nbsp;</td>
+            <td class="descr">Occurs after the animation is complete. Gives you the index of the current item. <em>(index is zero based)</em></td>
+        </tr>
+        <tr class="sub-title sub-title-inner">
+            <td colspan="3">Method</td>
+        </tr>
+        <tr>
+            <td class="name">fadeTo(index)</td>
+            <td class="value">&nbsp;</td>
+            <td class="descr">Go to the specified item. <em>(index is zero based)</em></td>
+        </tr>
+        <tr>
+            <td class="name">next()</td>
+            <td class="value">&nbsp;</td>
+            <td class="descr">Go to the next item.</td>
+        </tr>
+        <tr>
+            <td class="name">prev()</td>
+            <td class="value">&nbsp;</td>
+            <td class="descr">Go to the previous item.</td>
+        </tr>
+        <tr>
+            <td class="name">stop()</td>
+            <td class="value">&nbsp;</td>
+            <td class="descr">Pause the automatic transition.</td>
+        </tr>
+        <tr>
+            <td class="name">start()</td>
+            <td class="value">&nbsp;</td>
+            <td class="descr">Restart the automatic transition.</td>
+        </tr>
+    </table>
+    
+</div>
+</body>
+</html>
