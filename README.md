@@ -17,7 +17,7 @@ You can use whatever html structure you want to as long as there is a container 
 ```
 Use a list if you want to.
 ```html
-<ul>
+<ul class="fader">
 	<li>item 1</li>
 	<!-- ... -->
 	<li>item N</li>
@@ -31,7 +31,7 @@ The container must be **relative** and the items inside must be **absolute**.
 .fader { position: relative; }
 .fader .item { position: absolute; }
 ```
-The items must have some **non transparent background** within them and their size must be equal to their container's size, in order to *hide* them one below another.
+The items should have a **non transparent background** within them and their size should be equal to the size of the container, in order to *hide* them one below another.
 
 ##Plugin call
 ```js
@@ -41,7 +41,7 @@ $('.fader .item').srFade();
 ##Properties
 
 ####speed
-Alternate the animation **speed** (in milliseconds: 1000 = 1 second, 400 = 0.4 of a second).
+Alternate the animation speed (in milliseconds: 1000 = 1 second, 400 = 0.4 of a second).
 ```js
 $('.fader .item').srFade({speed: 600});
 ```
@@ -58,7 +58,7 @@ $('.fader .item').srFade({auto: false});
 ```
 
 ####animate
-Pass the css properties you want to animate like in the default's jquery animate method.
+Pass css properties to animate (like in the default's jquery animate method).
 ```js
 $('.fader .item').srFade({
 	animate: { width: 0, height: 0, top:500/2, left:800/2, opacity:0.5 }
@@ -66,7 +66,7 @@ $('.fader .item').srFade({
 ```
 
 ####easing
-Specify an easing function to use when transitioning between the items. Note that the **jquery.easing** plugin must be included in your html page before using this property.
+Specify an easing function to use for the transition between items. Note that the **jquery.easing** plugin must be included in your page before that.
 ```js
 $('.fader .item').srFade({
 	easing: 'easeOutBounce'
@@ -74,7 +74,7 @@ $('.fader .item').srFade({
 ```
 
 ####effect
-Specify a predefined animations from the **jquery.ui.effect** plugin. Note that it must be included in your html page before using this property.
+Specify a predefined animation from the **jquery.ui.effect** plugin. Note that it must be included in your page before that.
 ```js
 $('.fader .item').srFade({
 	effect: 'puff'
@@ -88,7 +88,7 @@ The *animate* and the *effect* properties can't be used simultaneously. The *eff
 ##Events
 
 ####onFade
-Raised just before the animation starts. It receives the **index** of the element that is about to be animated. This is the place to update the navigation of your fader (if you have one).
+Raised just before the animation starts. It receives the item's **index** that is about to be animated. This is the place to update the navigation of the fader (if there is one).
 ```js
 $('.fader .item').srFade({
 	onFade: function (index) {
@@ -98,7 +98,7 @@ $('.fader .item').srFade({
 ```
 
 ####onAfterFade
-Raises after the animation of the current item is completed. It receives the **index** of the current item. You can use this event to start secondary animations within your fader items.
+Raises after the animation of the current item is completed. It receives the current item's **index**. Can be used to start secondary animations within the fader items.
 ```js
 $('.fader .item').srFade({
 	onAfterFade: function (index) {
@@ -108,14 +108,14 @@ $('.fader .item').srFade({
 ```
 
 ##Methods
-First get an instance of your fader.
+First get an instance of the fader.
 ```js
 var fader = $('.fader .item').srFade({
 	// ... properties and events
 });
 ```
 ####prev
-If you have navigation arrows for cycle through the items use them like this.
+Navigation through the items back and forth. Usefull for navigation arrows.
 ```js
 $('.prev').click(function () {
 	fader.prev();
@@ -130,19 +130,23 @@ $('.next').click(function () {
 });
 ```
 ####fadeTo
-Use it to navigate to a specified item. Usefull for navigation dots.
+Navigate to a specified item. Usefull for navigation dots.
 ```js
 $('.fader-nav a').click(function () {
 	fader.fadeTo($('.fader-nav a').index(this));
 	return false;
 });
 ```
-####start stop
-The automatic transition between the items can be stopped temporarily and restarted back later on. Usefull when hovering on fader item.
+####stop
+The automatic transition between items can be stopped temporarily and restarted back later on. Usefull when hovering on fader item.
 ```js
-$('.fader .item').hover(function () {
+$('.fader .item').mouseover(function () {
 	fader.stop();
-}, function () {
+});
+```
+####start
+```js
+$('.fader .item').mouseout(function () {
 	fader.start();
 });
 ```
