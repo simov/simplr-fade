@@ -5,8 +5,8 @@ $(function () {
     */
 
     var fader1 = $('#fader1 .item').srFade({
-        speed    : 1000,
         duration : 1000,
+        delay    : 1000,
         auto     : false,
         effect   : 'puff',
         // update the fader navigation
@@ -36,8 +36,8 @@ $(function () {
     */
 
     var fader2 = $('#fader2 .item').srFade({
-        speed   : 700,
-        duration: 3000,
+        duration: 700,
+        delay   : 3000,
         animate : { top: -313 },
         easing: 'easeInOutCubic',
         // update the fader navigation
@@ -90,5 +90,5 @@ $(function () {
         background fader - uses default fade out
     */
     
-    $('body [class*=body-]').srFade({speed: 3000});
+    $('body [class*=body-]').srFade({duration: 3000});
 });

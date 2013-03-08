@@ -5,9 +5,11 @@ $(function () {
     fader = $('.fader .item').srFade({
         css3: $('.css3 option:eq(0)').text(),
         onFade: function (index) {
+            this.animated = true;
             $('.nav a').removeClass('active').eq(index).addClass('active');
         },
         onAfterFade: function (index) {
+            this.animated = false;
             if (this.cssChanged) {
                 cssInit();
                 this.cssChanged = false;
@@ -36,6 +38,7 @@ $(function () {
         fader.fadeTo($('.nav a').index(this));
         return false;
     });
+    fader.animated = false;
 });
 
 // demo
@@ -86,6 +89,11 @@ $(function () {
                 break;
             case 3: //css3
                 fader.effect = null;
+                if (fader.animated) {
+                    fader.cssChanged = true;
+                } else {
+                    cssInit();
+                }
                 $('.css3').trigger('change');
                 // dropdowns
                 $('.css3').attr('disabled', false);
@@ -128,9 +136,9 @@ $(function () {
             $('.easing-sub').attr('disabled', false);
             fader.easing = $('.easing-sub option:selected').val()
                             + $('.easing option:selected').val();
-            if (fader.css3) {
-                $('.fader .item').css(prefix+'animation-timing-function', cssEasing());
-            }
+        }
+        if (fader.css3) {
+            $('.fader .item').css(prefix+'animation-timing-function', cssEasing());
         }
     });
 
@@ -184,7 +192,7 @@ $(function () {
 
     $('.css3').on('change', function (e) {
         // inline
-        fader.cssChanged = true;
+        // fader.cssChanged = true;
         // set transition
         var name = $('.css3 option:selected').text();
         fader.css3 = name;
