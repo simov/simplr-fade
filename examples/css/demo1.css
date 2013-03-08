@@ -44,14 +44,21 @@ h2 { text-align: center; padding: 0 0 10px 0; }
 .controls .nav a.active { font-weight: bold; }
 
 /*demo controls*/
-#controls { text-align: center; padding: 0 0 20px 0; }
-#controls label,
+#controls { cursor: default; padding: 0 0 20px 0; }
+#controls .settings { text-align: center; }
+#controls fieldset:not(:first-child) { width: 313px; border-radius: 5px; position: relative; z-index: 1; padding: 5px 10px; margin: 0 auto; }
+#controls fieldset:not(:first-child) label { width: 100%; cursor: pointer; /*width: 150px;*/ }
+#controls fieldset:not(:first-child) select { width: 160px; position: absolute; top: 4px; right: 10px; z-index: 1; }
+#controls fieldset:not(:first-child):hover { background: #eaeaea; }
+#controls fieldset:not(:first-child).active { background: #999; }
+#controls label, 
 #controls select { display: inline-block; }
-#controls textarea { display: block; min-width: 400px; height: 17px; min-height: 17px; border: 1px solid #9b9b9b; border-radius: 5px; text-align: center; padding: 5px; margin: 18px auto 5px; }
-#controls label { cursor: pointer; }
+#controls textarea { display: block; width: 303px; border: 1px solid #9b9b9b; border-radius: 5px; resize: vertical; padding: 5px; margin: 10px auto 5px; }
+/*#controls label { cursor: default; }*/
+/*#controls label:hover { color: #fff; }*/
 #controls button { padding: 0 5px; }
 #controls p { color: #f60909; display: none; }
-#controls [type=radio] { position: relative; z-index: 1; top: 2px; margin: 0 0 0 10px; }
+#controls [type=radio] { position: relative; z-index: 1; top: 2px; }
 #controls fieldset { padding: 0 0 5px 0; }
 #controls fieldset:first-child { padding: 0 0 18px 0; }
 #controls fieldset:first-child label { padding: 0 0 0 5px; }

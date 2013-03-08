@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>simplr.fade</title>
+    <link href="http://daneden.me/animate/animate.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/demo1.css" rel="stylesheet" type="text/css" media="all" />
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -49,20 +50,37 @@
     </ul>
 
     <form id="controls">
-        <fieldset>
+        <fieldset class="settings">
+            <label>Duration</label>
+            <select class="duration">
+                <option>200</option>
+                <option>400</option>
+                <option>800</option>
+                <option>1000</option>
+                <option>1200</option>
+            </select>
+            <label>Delay</label>
+            <select class="delay">
+                <option>1000</option>
+                <option>2000</option>
+                <option>3000</option>
+                <option>4000</option>
+                <option>5000</option>
+            </select>
             <label>Easing</label>
             <select class="easing">
                 <option>swing</option>
                 <option>linear</option>
+                <option>Sine</option>
                 <option>Quad</option>
                 <option>Cubic</option>
                 <option>Quart</option>
                 <option>Quint</option>
-                <option>Sine</option>
                 <option>Expo</option>
                 <option>Circ</option>
-                <option>Elastic</option>
                 <option>Back</option>
+
+                <option>Elastic</option>
                 <option>Bounce</option>
             </select>
             <select class="easing-sub">
@@ -70,38 +88,12 @@
                 <option>easeOut</option>
                 <option>easeInOut</option>
             </select>
-            <label>Speed</label>
-            <select class="speed">
-                <option>200</option>
-                <option>400</option>
-                <option>800</option>
-                <option>1000</option>
-                <option>1200</option>
-            </select>
-            <label>Duration</label>
-            <select class="duration">
-                <option>1000</option>
-                <option>2000</option>
-                <option>3000</option>
-                <option>4000</option>
-                <option>5000</option>
-            </select>
         </fieldset>
         <fieldset>
-            <label><input type="radio" name="radio" /> Fade (Default)</label>
-            <label><input type="radio" name="radio" /> Effect <span>(jQueryUI)</span></label>
-            <select class="effect">
-                <option>Puff</option>
-                <option>Blind</option>
-                <option>Clip</option>
-                <option>Drop</option>
-                <option>Explode</option>
-                <option>Fade</option>
-                <option>Fold</option>
-            </select>
+            <label><input type="radio" name="transition" /> <b>fade</b> (default)</label>
         </fieldset>
         <fieldset>
-            <label><input type="radio" name="radio" /> Animate</label>
+            <label><input type="radio" name="transition" /> <b>animate</b> (jquery)</label>
             <select class="animate">
                 <option>Predefined animation 1</option>
                 <option>Predefined animation 2</option>
@@ -120,6 +112,47 @@
                 <button type="button" class="create">change</button>
             </div>
         </fieldset>
+        <fieldset>
+            <label><input type="radio" name="transition" /> <b>effect</b> <span>(jqueryUI)</span></label>
+            <select class="effect">
+                <option>puff</option>
+                <option>blind</option>
+                <option>clip</option>
+                <option>drop</option>
+                <option>explode</option>
+                <option>fade</option>
+                <option>fold</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label><input type="radio" name="transition" /> <b>css3</b> (animate.css)</label>
+            <select class="css3">
+                <option>flipOutX</option>
+                <option>flipOutY</option>
+                <option>fadeOut</option>
+                <option>fadeOutUp</option>
+                <option>fadeOutDown</option>
+                <option>fadeOutLeft</option>
+                <option>fadeOutRight</option>
+                <option>fadeOutUpBig</option>
+                <option>fadeOutDownBig</option>
+                <option>fadeOutLeftBig</option>
+                <option>fadeOutRightBig</option>
+                <option>bounceOut</option>
+                <option>bounceOutDown</option>
+                <option>bounceOutUp</option>
+                <option>bounceOutLeft</option>
+                <option>bounceOutRight</option>
+                <option>rotateOut</option>
+                <option>rotateOutDownLeft</option>
+                <option>rotateOutDownRight</option>
+                <option>rotateOutUpLeft</option>
+                <option>rotateOutUpRight</option>
+                <option>lightSpeedOut</option>
+                <option>hinge</option>
+                <option>rollOut</option>
+            </select>
+        </fieldset>
     </form>
     
     <h2>API</h2>
@@ -133,14 +166,19 @@
             <td colspan="3">Property</td>
         </tr>
         <tr>
-            <td class="name">speed</td>
+            <td class="name">duration</td>
             <td class="value">400</td>
-            <td class="descr">Speed of the animation.</td>
+            <td class="descr">Duration of the animation.</td>
         </tr>
         <tr>
-            <td class="name">duration</td>
+            <td class="name">delay</td>
             <td class="value">5000</td>
-            <td class="descr">Time between steps.</td>
+            <td class="descr">Delay between steps when <em>auto</em> is on.</td>
+        </tr>
+        <tr>
+            <td class="name">easing</td>
+            <td class="value string-value">swing</td>
+            <td class="descr">Specify easing for the transition. <strong>Requires</strong> <a href="http://gsgd.co.uk/sandbox/jquery/easing/" target="_blank">jquery easing</a> plugin for <em>fade</em> and <em>animate</em>.</td>
         </tr>
         <tr>
             <td class="name">auto</td>
@@ -150,17 +188,17 @@
         <tr>
             <td class="name">animate</td>
             <td class="value string-value">fadeOut</td>
-            <td class="descr">Pass an object of css properties to be animated for the transition. <em>(default jquery animate())</em></td>
-        </tr>
-        <tr>
-            <td class="name">easing</td>
-            <td class="value string-value">swing</td>
-            <td class="descr">Specify easing for the transition. <strong>Requires</strong> <em>jquery.easing</em> plugin.</td>
+            <td class="descr">Pass an object of css properties to be animated for the transition <em>(uses jquery's animate method)</em>.</td>
         </tr>
         <tr>
             <td class="name">effect</td>
             <td class="value">null</td>
-            <td class="descr">Possible values: <em>blind</em>, <em>clip</em>, <em>drop</em>, <em>explode</em>, <em>fade</em>, <em>fold</em>, <em>puff</em>. <strong>Requires</strong> <em>jquery.ui.effects</em> plugin.</td>
+            <td class="descr">Possible values: <em>blind</em>, <em>clip</em>, <em>drop</em>, <em>explode</em>, <em>fade</em>, <em>fold</em>, <em>puff</em>. <strong>Requires</strong> <a href="http://docs.jquery.com/UI/Effects" target="_blank">jquery ui effects</a></em> plugin.</td>
+        </tr>
+        <tr>
+            <td class="name">css3</td>
+            <td class="value">null</td>
+            <td class="descr">Possible values: all <em>out</em> and <em>exit</em> transitions. <strong>Requires</strong> <a href="http://daneden.me/animate/" target="_blank"><em>animate.css</em></a>.</td>
         </tr>
         <tr class="sub-title sub-title-inner">
             <td colspan="3">Event</td>
