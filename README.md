@@ -1,5 +1,5 @@
 
-# simplr-fade / [Playground](http://simov.github.com/simplr-fade/) / [Multiple](http://simov.github.com/simplr-fade/examples/demo2.html)
+# simplr-fade / [Playground](http://simov.github.io/simplr-fade/) / [Multiple](http://simov.github.io/simplr-fade/examples/demo2.html)
 
 ## HTML
 
